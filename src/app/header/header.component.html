@@ -1,0 +1,46 @@
+<header>
+  <div class="container-fluid header sticky" id="myHeader">
+    <div class="row">
+      <div class="tw-w-full tw-flex">
+        <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+          <div class="logo tw-flex">
+            <a routerLink="/">
+              <img src="assets/logo-dark.svg" alt="tylextech logo" class="img-fluid light-sec" />
+            </a>
+          </div>
+          <div class="menu-icon tw-flex">
+            <a href="javascript:void(0);" class="menu-btn" (click)="changeIcon()">
+              <i class="fa-sharp fa-solid fa-bars-staggered" loading="lazy"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div *ngIf="showMenu" id="myNav" [class.menu-design]="true" [class.show]="showMenu">
+  <div class="tw-grid tw-grid-rows-[auto_1fr_auto] tw-h-screen tw-w-full">
+    <div class="menu-design-closebtn">
+      <a href="javascript:void(0);" class="closebtn" (click)="closeNav()">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+    </div>
+    <div class="tw-grid tw-grid-cols-[1fr_auto]">
+      <div class="tw-py-16 tw-px-4 tw-text-4xl tw-font-normal tw-flex tw-flex-col tw-justify-center">
+          <div *ngFor="let menu of menu_lists" class="home-page-menu-design">
+            <a (click)="closeNav()" class="home-page-menu-design-link" *ngIf="menu.tab === null" [routerLink]="menu.url">{{ menu.name }}</a>
+            <p  class="home-page-menu-design-link" *ngIf="menu.tab !== null" [routerLink]="menu.tab">{{ menu.name }}</p>
+            <ul *ngIf="menu.children" class="home-page-menu-design-link-children">
+              <div *ngFor="let childMenu of menu.children" class="home-page-menu-design-link-children-content">
+                <a (click)="closeNav()" class="home-page-menu-design-link-children-content-link" [routerLink]="childMenu.url">
+                  <img [src]="childMenu.image" [alt]="childMenu.alt" *ngIf="childMenu.image">
+                 <p>{{childMenu.name }}</p>
+                </a>
+              </div>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
