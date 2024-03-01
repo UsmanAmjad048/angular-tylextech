@@ -1,0 +1,358 @@
+p {
+    @apply tw-mb-0
+}
+
+.mad-header {
+    @apply tw-mt-28 tw-mb-60;
+
+    &-text {
+        &-div {
+            &-title {
+                @apply tw-font-semibold;
+                font-size: 3.5rem;
+                line-height: 4rem
+            }
+
+            &-detail {
+                @apply tw-font-normal tw-leading-10 tw-mt-4;
+                font-size: 2rem
+            }
+        }
+    }
+
+    &-img {
+        @apply tw-flex tw-justify-end;
+
+        & div {
+            width: 80%
+        }
+    }
+}
+
+.mad-header-content {
+    @apply tw-text-center tw-font-normal tw-m-auto tw-mb-16;
+    font-size: 1.5rem;
+    line-height: 130.5%;
+    width: 90%
+}
+
+.mad {
+    &-performance {
+        width: 22rem;
+
+        &-title {
+            @apply tw-text-center tw-text-5xl tw-font-bold;
+            color: #d83b01;
+            line-height: 130.5%
+        }
+
+        &-detail {
+            @apply tw-text-center tw-font-normal;
+            font-size: 1.5rem;
+            line-height: 130.5%
+        }
+    }
+}
+
+.mad-professional {
+    @apply tw-flex tw-flex-col tw-gap-10 tw-mt-40 tw-mb-16;
+
+    &-title {
+        @apply tw-font-semibold;
+        font-size: 3rem;
+        line-height: 4rem;
+        width: 70%
+    }
+
+    &-text {
+        @apply tw-font-normal tw-w-4/5;
+        font-size: 1.5rem
+    }
+
+    &-list {
+        @apply tw-grid tw-grid-cols-2 tw-gap-10;
+        font-size: 1.5rem;
+
+        &-box1 {
+            @apply tw-grid tw-grid-rows-2 tw-gap-10;
+
+            &-column {
+                @apply tw-items-center;
+
+                &-img {
+                    width: 6rem
+                }
+
+                &-p {
+                    @apply tw-font-normal
+                }
+            }
+        }
+
+        &-box2 {
+            @apply tw-grid tw-grid-rows-2 tw-gap-10;
+
+            &-column {
+                @apply tw-items-center;
+
+                &-img {
+                    width: 6rem
+                }
+
+                &-p {
+                    @apply tw-font-normal
+                }
+            }
+        }
+    }
+}
+
+.mad-technology {
+    @apply tw-mt-20 tw-mb-40;
+
+    &-title {
+        @apply tw-font-semibold tw-mb-16;
+        font-size: 2rem;
+        line-height: 2.5rem
+    }
+
+    &-list {
+        @apply tw-flex tw-mb-16 tw-gap-x-4;
+
+        &-sr {
+            @apply tw-ml-20 tw-pt-2;
+
+            &-content {
+                @apply tw-w-44 tw-relative;
+
+                &-number {
+                    @apply tw-font-semibold tw-border-solid tw-rounded-full tw-w-16 tw-h-16 tw-flex tw-justify-center tw-items-center tw-absolute tw-left-0.5 tw-top-0.5;
+                    font-size: 2rem;
+                    font-family: Outfit;
+                    border: 1px solid;
+                    z-index: -1
+                }
+            }
+        }
+
+        &-content {
+            @apply tw-flex tw-flex-col tw-gap-y-6;
+
+            &-title {
+                @apply tw-font-semibold;
+                font-size: 2rem
+            }
+
+            &-detail {
+                @apply tw-font-normal;
+                font-size: 1.5rem;
+                line-height: 130.5%
+            }
+        }
+    }
+}
+
+.mad-experties {
+    @apply tw-flex tw-flex-col tw-gap-y-8;
+
+    &-title {
+        @apply tw-font-semibold;
+        color: #d83b01;
+        font-size: 2rem;
+        line-height: 2.5rem
+    }
+
+    &-detail {
+        @apply tw-font-normal;
+        font-size: 1.5rem;
+        line-height: 130.5%
+    }
+}
+
+@media only screen and (min-width:1550px) {
+    .mad-header {
+        margin-top: 12rem
+    }
+}
+
+@media only screen and (max-width:1024px) {
+    .mad-header {
+        margin-bottom: 10rem
+    }
+
+    .mad-experties-detail,
+    .mad-technology-list-content-detail,
+    .mad-professional-list,
+    .mad-professional-text,
+    .mad-performance-detail,
+    .mad-header-content {
+        font-size: 1.625rem
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .mad-header {
+        @apply tw-gap-y-20 tw-my-20 tw-grid-cols-1;
+
+        &-text {
+            @apply tw-text-center;
+
+            &-div {
+                @apply tw-flex tw-flex-col tw-m-auto tw-gap-y-8;
+                width: 74%;
+
+                &-detail {
+                    @apply tw-w-full
+                }
+            }
+        }
+
+        &-img {
+            @apply tw-flex tw-justify-center tw-m-auto;
+            width: 70%;
+        }
+    }
+
+    .mad {
+        &-performance {}
+    }
+
+    .mad-professional {
+        &-title {
+            font-size: 2.25rem;
+            line-height: 3rem
+        }
+
+        &-text {
+            @apply tw-w-full
+        }
+
+        &-list {
+            @apply tw-grid-cols-1;
+
+            &-box1 {
+                &-column {
+                    @apply tw-flex-col tw-items-start;
+                }
+            }
+
+            &-box2 {
+                &-column {
+                    @apply tw-flex-col tw-items-start;
+                }
+            }
+        }
+    }
+
+    .mad-technology {
+        &-list {
+            @apply tw-flex-col tw-gap-y-8;
+
+            &-sr {
+                @apply tw-pt-0 tw-ml-0;
+
+                &-content {
+                    &-img {
+                        @apply tw-hidden
+                    }
+
+                    &-number {
+                        @apply tw-w-8 tw-h-0;
+                        border: 0;
+                        color: #d83b01
+                    }
+                }
+            }
+
+            &-content {}
+        }
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .mad-professional {
+        margin-top: 7rem
+    }
+
+    .mad-technology {
+        &-title {
+            margin-bottom: 5rem
+        }
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .mad-header {
+        &-text {
+            &-div {}
+        }
+
+        &-img {
+            @apply tw-w-4/5;
+        }
+    }
+}
+
+@media only screen and (max-width:550px) {
+    .mad-header {
+        &-text {
+            &-div {
+                width: 90%;
+            }
+        }
+
+        &-img {
+            width: 95%;
+        }
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .mad-professional {
+        &-title {
+            width: 100%
+        }
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .mad {
+        flex-direction: column;
+        row-gap: 4rem;
+        align-items: center
+    }
+
+    .mad-header {
+        &-text {
+            &-div {
+                &-title {
+                    font-size: 3.25rem;
+                    line-height: 4.5rem
+                }
+            }
+        }
+
+        &-img {
+            @apply tw-w-full;
+        }
+    }
+}
+
+@media only screen and (max-width:375px) {
+    .mad-header {
+        &-text {
+            &-div {
+                width: 100%;
+
+                &-title {
+                    font-size: 2.5rem;
+                    line-height: 3.5rem
+                }
+            }
+        }
+
+        &-img {
+            width: 100%;
+        }
+    }
+}

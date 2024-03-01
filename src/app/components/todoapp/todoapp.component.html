@@ -1,0 +1,102 @@
+<div class="container tw-pt-32">
+    <app-alert [type]="responseType" [message]="responseMessage" [ngClass]="{'show': alertVisible}" class="alert" (close)="hideAlert()"></app-alert>
+
+    <form [formGroup]="taskForm" enctype="multipart/form-data"
+        class="tw-max-w-md tw-mx-auto tw-bg-white tw-shadow-md tw-rounded tw-px-8 tw-pt-6 tw-pb-8 tw-mb-4">
+        <div class="tw-mb-4">
+            <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="title">Title:</label>
+            <input
+                class="tw-shadow appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:shadow-outline"
+                id="title" formControlName="title" type="text" placeholder="Title" required>
+        </div>
+
+        <div class="tw-mb-4">
+            <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2"
+                for="description">Description:</label>
+            <textarea
+                class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:shadow-outline"
+                id="description" formControlName="description" placeholder="Description"></textarea>
+        </div>
+
+
+
+        <div class="tw-mb-4">
+            <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="due_date">Due Date:</label>
+            <input
+                class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:shadow-outline"
+                id="due_date" formControlName="due_date" type="date">
+        </div>
+
+        <div class="tw-mb-4">
+            <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="status">Status:</label>
+            <select
+                class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:shadow-outline"
+                id="status" formControlName="status">
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+                <option value="in_progress">In Progress</option>
+            </select>
+        </div>
+
+
+        <div class="tw-mb-4">
+            <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="image">Image:</label>
+            <input (change)="handleImageUpload($event)" required
+                class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:outline-none tw-focus:shadow-outline"
+                id="image" type="file">
+        </div>
+
+        
+
+        <div *ngIf="submitbutton" class="tw-flex tw-items-center tw-justify-between">
+            <button (click)="onSubmit()"
+                class="tw-bg-blue-500 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:outline-none tw-focus:shadow-outline"
+                type="submit">Submit</button>
+        </div>
+        
+        <div *ngIf="!submitbutton" class="tw-flex tw-items-center tw-justify-between">
+            <button type="submit" (click)="updateTask(pk)"
+                class="tw-bg-blue-500 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:outline-none tw-focus:shadow-outline"
+                >Update</button>
+            <button (click)="onCancel()"
+                class="tw-bg-blue-500 hover:tw-bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:outline-none tw-focus:shadow-outline"
+                >Cancel</button>
+        </div>
+        
+
+
+    </form>
+    <div class="tw-mt-8">
+        <!-- Title and Description -->
+        <div class="tw-mb-6">
+            <h2 class="tw-text-lg tw-font-bold tw-mb-2">Task List</h2>
+            <p class="tw-text-gray-700">Below is a list of tasks:</p>
+        </div>
+
+        <!-- Task List -->
+        <ul class="tw-grid tw-gap-6 tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+            <li *ngFor="let task of tasks" class="tw-bg-gray-100 tw-rounded-lg tw-shadow-md">
+                <div class="tw-p-6">
+                    <h3 class="tw-text-xl tw-font-bold">{{ task.title }}</h3>
+                    <p class="tw-text-gray-700 tw-mb-4">{{ task.description }}</p>
+                    <div class="tw-flex tw-justify-between tw-items-center">
+                        <p class="tw-text-gray-500">Due: {{ task.due_date }}</p>
+                        <p class="tw-text-gray-500">Status: {{ task.status }}</p>
+                    </div>
+                </div>
+                <div class="tw-px-6 tw-py-4  tw-flex tw-justify-end">
+                    <button (click)="detailTask(task.id)"
+                        class="tw-bg-red-500 tw-hover:bg-red-700 tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:tw-outline-none tw-focus:tw-shadow-outline">Detail</button>
+                    <button (click)="update(task.id)"
+                        class="tw-bg-red-500 tw-hover:bg-red-700 tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:tw-outline-none tw-focus:tw-shadow-outline">Update</button>
+                    <button (click)="removeTask(task.id)"
+                        class="tw-bg-red-500 tw-hover:bg-red-700 tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-focus:tw-outline-none tw-focus:tw-shadow-outline">Remove</button>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+
+
+
+</div>

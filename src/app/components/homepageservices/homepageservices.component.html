@@ -1,1 +1,15 @@
-<p>homepageservices works!</p>
+<div class="service-list" *ngFor="let list of servicelist">
+    <div class="service-list-content">
+        <h3 class="service-list-content-number hy">{{ list.number }}</h3>
+        <h3 class="service-list-content-title hy">{{ list.title }}</h3>
+        <p class="service-list-content-text">{{ list.text }}</p>
+        <div class="home-page-content-button" style="width: fit-content">
+            <app-thebutton  [urls]="list.url"   [buttonText]=" list.buttonText"></app-thebutton>
+        </div>
+    </div>
+    <div class="service-list-image">
+        <div class="service-list-image-border">
+            <img [src]="list.imageLight" [alt]="list.title" class="light-sec" loading="lazy" />
+        </div>
+    </div>
+</div>

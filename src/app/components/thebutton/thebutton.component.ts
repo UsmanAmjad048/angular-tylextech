@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './thebutton.component.scss'
 })
 export class ThebuttonComponent {
-  // @Input() to!: string;
   @Input() buttonText!: string;
+  @Input() urls!:string;
  }

@@ -1,0 +1,16 @@
+<div class="container tw-mt-32">
+    <!-- task-detail.component.html -->
+<div *ngIf="task" class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6">
+    <h2 class="tw-text-2xl tw-font-bold tw-mb-4">{{ task.title }}</h2>
+    <p><strong class="tw-font-semibold">Description:</strong> {{ task.description }}</p>
+    <p><strong class="tw-font-semibold">Created Date:</strong> {{ task.created_date }}</p>
+    <p><strong class="tw-font-semibold">Due Date:</strong> {{ task.due_date }}</p>
+    <p><strong class="tw-font-semibold">Status:</strong> {{ task.status }}</p>
+    <!-- Add other fields as needed -->
+    <img *ngIf="task.image" [src]="'http://127.0.0.1:8000' + task.image" alt="Task Image" class="tw-mt-4 tw-rounded-lg" width="200">
+</div>
+  <div *ngIf="!task" class="tw-text-gray-600 tw-mt-4">
+    <p>Loading task...</p>
+  </div>
+  
+</div>

@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="tw-grid tw-grid-cols-2 tw-items-center mad-header">
+        <div class="mad-header-text">
+          <div class="mad-header-text-div">
+            <h1 class="mad-header-text-div-title">
+              Code. Create. Conquer.<br>Modern Application Development Powered by Innovation. 
+            </h1>
+            <p class="mad-header-text-div-detail">
+              TylexTech reimagines your apps, pixel by pixel, creating experiences that wow with its Modern Application Development Services!
+            </p>
+            <div class="home-page-content-button homebutton" style="width: fit-content;">
+                <app-thebutton  [urls]="url"   [buttonText]="madtext"></app-thebutton>
+          </div>
+          </div>
+      
+        </div>
+    
+        <div class="mad-header-img">
+          <div class="">
+            <img class="light-sec mad-header-img-content" src="assets/MADPage/Group649.svg" alt="Modern Application Development Powered by Innovation." loading="eager" />
+          </div>
+        </div>
+      </div>
+      <p class="mad-header-content">
+        Our end-to-end application development services include the development of new applications, modernization, management, maintenance, and support. Solving the mainframe application conundrum is always a big challenge for companies. Covid-19 forced companies to migrate to the cloud, but it did not solve the challenges of high cost, finding talent familiar with old programming, and poor agility. Benefit from Tylex’s application modernization solutions.
+      </p>
+      <div class="tw-flex tw-justify-center mad tw-gap-x-8">
+        <div class="mad-performance">
+          <p class="mad-performance-title">70%</p>
+          <p class="mad-performance-detail">
+            better integration with other platforms
+          </p>
+        </div>
+        <div class="mad-performance">
+          <p class="mad-performance-title">59%</p>
+          <p class="mad-performance-detail">Increased agility</p>
+        </div>
+        <div class="mad-performance">
+          <p class="mad-performance-title">57%</p>
+          <p class="mad-performance-detail">
+            reduced maintenance
+            cost
+          </p>
+        </div>
+      </div>
+      <div class="mad-professional">
+        <h2 class="mad-professional-title">
+          When companies decide to go down the modernization path
+        </h2>
+        <p class="mad-professional-text">
+          We at Tylex assist them to identify the best option to suit their business. We keep in view factors of,
+        </p>
+      </div>
+      <div class="tw-mt-10 tw-mb-40">
+        <div class="mad-professional-list">
+          <div class="mad-professional-list-box1">
+            <div class="tw-flex tw-gap-8 mad-professional-list-box1-column">
+              <img
+                class="mad-professional-list-box1-column-img"
+                src="/assets/MADPage/service-list1.svg"
+                alt="Achieving a reduction in infrastructure deployment"
+              />
+  
+              <p class="mad-professional-list-box1-column-p">
+                Achieving a reduction in infrastructure deployment failures and enabling successful rollbacks through frequent testing.
+              </p>
+            </div>
+            <div class="tw-flex tw-gap-8 mad-professional-list-box1-column">
+              <img
+                class="mad-professional-list-box1-column-img"
+                src="/assets/MADPage/service-list3.svg"
+                alt="Strengthening source code control"
+              />
+              <p class="mad-professional-list-box1-column-p">
+                Strengthening source code control and enhancing the elasticity of Cloud Computing while implementing automated process monitoring.
+              </p>
+            </div>
+          </div>
+          <div class="mad-professional-list-box2">
+            <div class="tw-flex tw-gap-8 mad-professional-list-box2-column">
+              <img
+                class="mad-professional-list-box2-column-img"
+                src="/assets/MADPage/service-list2.svg"
+                alt="Establishing collaborative teams"
+              />
+              <p class="mad-professional-list-box2-column-p">
+                Establishing collaborative teams with shared objectives emphasizing strong working principles, and consistently delivering value. 
+              </p>
+            </div>
+            <div class="tw-flex tw-gap-8 mad-professional-list-box2-column">
+              <img
+                class="mad-professional-list-box2-column-img"
+                src="/assets/MADPage/service-list4.svg"
+                alt="Creating a fully detailed system service architecture"
+              />
+              <p class="mad-professional-list-box2-column-p">
+                Creating a fully detailed system service architecture that improves MMTR (mean time to recovery) and ensures a faster recovery process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mad-technology">
+        <h2 class="mad-technology-title">
+          We have capacity to deliver any of the above options since we are
+          resourceful in following technologies.
+        </h2>
+        <div class="mad-technology-list" *ngFor="let item of technology" >
+          <div class="mad-technology-list-sr">
+            <div class="mad-technology-list-sr-content">
+              <img
+                class="mad-technology-list-sr-content-img"
+                src="/assets/MADPage/Ellipse119.svg"
+                alt="design image"
+              />
+              <h3 class="mad-technology-list-sr-content-number">
+                {{ item.number }}
+              </h3>
+            </div>
+          </div>
+          <div class="mad-technology-list-content">
+            <h3 class="mad-technology-list-content-title">{{ item.title }}</h3>
+            <p class="mad-technology-list-content-detail">{{ item.text }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="mad-experties">
+        <h2 class="mad-experties-title">
+          At Tylextech, we have expertise in utilizing these cutting-edge technologies to develop robust and high-performance web and mobile applications.
+        </h2>
+        <p class="mad-experties-detail">
+          Our skilled team is proficient in leveraging the power of Python (Django), Vue.js/Quasar, React, Tailwind CSS, PHP (Laravel, Symfony), React Native, and Flutter to build customized solutions tailored to your specific requirements. Furthermore, as pioneers in Web3 development, we employ Web3.js to create decentralized applications (dApps) and seamlessly integrate blockchain technology into your web and mobile projects. With our in-depth knowledge of Web3 development, we enable you to harness the potential of blockchain, smart contracts, and cryptocurrency in your applications. By utilizing this comprehensive stack of web and mobile technologies, we ensure that your projects are developed using the latest tools and frameworks, resulting in exceptional user experiences, scalability, and long-term success.
+        </p>
+      </div>
+</div>

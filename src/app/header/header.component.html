@@ -27,18 +27,29 @@
     </div>
     <div class="tw-grid tw-grid-cols-[1fr_auto]">
       <div class="tw-py-16 tw-px-4 tw-text-4xl tw-font-normal tw-flex tw-flex-col tw-justify-center">
-          <div *ngFor="let menu of menu_lists" class="home-page-menu-design">
-            <a (click)="closeNav()" class="home-page-menu-design-link" *ngIf="menu.tab === null" [routerLink]="menu.url">{{ menu.name }}</a>
-            <p  class="home-page-menu-design-link" *ngIf="menu.tab !== null" [routerLink]="menu.tab">{{ menu.name }}</p>
-            <ul *ngIf="menu.children" class="home-page-menu-design-link-children">
-              <div *ngFor="let childMenu of menu.children" class="home-page-menu-design-link-children-content">
-                <a (click)="closeNav()" class="home-page-menu-design-link-children-content-link" [routerLink]="childMenu.url">
-                  <img [src]="childMenu.image" [alt]="childMenu.alt" *ngIf="childMenu.image">
-                 <p>{{childMenu.name }}</p>
-                </a>
-              </div>
-            </ul>
-          </div>
+        <div *ngFor="let menu of menu_lists" class="home-page-menu-design">
+          <a (click)="closeNav()" class="home-page-menu-design-link" *ngIf="menu.tab === null"
+            [routerLink]="menu.url">{{ menu.name }}</a>
+          <p class="home-page-menu-design-link" *ngIf="menu.tab !== null" [routerLink]="menu.tab">{{ menu.name }}</p>
+          <ul *ngIf="menu.children" class="home-page-menu-design-link-children">
+            <div *ngFor="let childMenu of menu.children" class="home-page-menu-design-link-children-content">
+              <a (click)="closeNav()" class="home-page-menu-design-link-children-content-link"
+                [routerLink]="childMenu.url">
+                <img [src]="childMenu.image" [alt]="childMenu.alt" *ngIf="childMenu.image">
+                <p>{{childMenu.name }}</p>
+              </a>
+            </div>
+          </ul>
+        </div>
+        <div *ngIf="isAuthenticated()" class="tw-flex tw-items-start tw-flex-col">
+          <a routerLink="/todoapp">
+            <button class="signout tw-cursor-pointer" (click)="closeNav()">Todo App</button>
+          </a>          
+          <button  class="signout tw-cursor-pointer" (click)="logout();closeNav()">Sign Out</button>
+
+        </div>
+        
+        
 
       </div>
     </div>

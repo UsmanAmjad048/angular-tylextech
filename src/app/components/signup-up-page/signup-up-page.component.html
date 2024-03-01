@@ -1,0 +1,23 @@
+<div class="container tw-text-center">
+  <h1 class="tw-pt-20 tw-text-4xl">Hello, Welcome</h1>
+  <h3 class="tw-text-lg">Create An Account</h3>
+  <form [formGroup]="formData" (ngSubmit)="submitForm()" class="tw-max-w-md tw-mx-auto tw-mt-8 tw-text-left">
+      <div class="tw-mb-4">
+          <label for="username" class="tw-block tw-text-sm tw-font-bold tw-mb-2">Username</label>
+          <input formControlName="username" type="text" required
+                 class="tw-appearance-none tw-border tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:tw-outline-none tw-focus:tw-shadow-outline">
+      </div>
+      <div class="tw-mb-4">
+          <label for="email" class="tw-block tw-text-sm tw-font-bold tw-mb-2">Email</label>
+          <input formControlName="email" type="email" required
+                 class="tw-appearance-none tw-border tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:tw-outline-none tw-focus:tw-shadow-outline">
+      </div>
+      <div class="tw-mb-6">
+          <label for="password" class="tw-block tw-text-sm tw-font-bold tw-mb-2">Password</label>
+          <input formControlName="password" type="password" required
+                 class="tw-appearance-none tw-border tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:tw-outline-none tw-focus:tw-shadow-outline">
+      </div>
+      <button type="submit" class="tw-bg-blue-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded">Submit</button>
+      <span class="tw-block tw-mt-4 tw-text-sm">Already have an account? <a routerLink="/login" class="tw-text-blue-500 hover:tw-text-blue-700">Login</a></span>
+  </form>
+</div>
