@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Task } from '../task.model';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { AlertComponent } from '../alert/alert.component';
+import { StoreService } from  '../store.service';
 import axios from 'axios';
 interface ApiResponse {
   status: boolean;
@@ -32,6 +33,10 @@ interface ApiResponse2 {
   styleUrl: './todoapp.component.scss'
 })
 export class TodoappComponent implements OnInit {
+  value: boolean = false;
+
+
+
   task: Task;
   pk: number = 0;
   responseType: "success" | "error" = "success";
@@ -41,7 +46,7 @@ export class TodoappComponent implements OnInit {
   taskForm: FormGroup;
   tasks: Task[] = [];
   submitbutton: boolean;
-  constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private storeService: StoreService,private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: [''],
@@ -86,10 +91,12 @@ export class TodoappComponent implements OnInit {
       });
     }
   }
-
-
+  
   onSubmit() {
     if (this.taskForm.valid) {
+      this.value = true;
+  this.storeService.setData(this.value);
+
       const formData = new FormData();
       Object.keys(this.taskForm.value).forEach(key => {
         formData.append(key, this.taskForm.value[key]);
@@ -102,6 +109,8 @@ export class TodoappComponent implements OnInit {
           if (response.messsage) {
             this.responseType = 'success';
             this.responseMessage = response.messsage;
+            this.value = false;
+  this.storeService.setData(this.value);
             this.showAlert();
             setTimeout(() => {
               this.hideAlert(); 
@@ -109,6 +118,8 @@ export class TodoappComponent implements OnInit {
           }
         },
         (error) => {
+          this.value = false;
+  this.storeService.setData(this.value);
           this.responseType = 'error';
           this.responseMessage = error;
         });
@@ -118,16 +129,22 @@ export class TodoappComponent implements OnInit {
   }
 
   refreshTasks() {
+    this.value = true;
+  this.storeService.setData(this.value);
     this.getTasks().subscribe(
       (response: ApiResponse) => {
         console.log(response.data)
         this.tasks = response.data;
+        this.value = false;
+  this.storeService.setData(this.value);
         const fileInput = document.getElementById('image') as HTMLInputElement;
         if (fileInput) {
           fileInput.value = '';
         }
       },
       (error) => {
+        this.value = false;
+  this.storeService.setData(this.value);
         console.error('Error refreshing tasks:', error);
       }
     );
@@ -140,21 +157,28 @@ export class TodoappComponent implements OnInit {
     this.alertVisible = false; // Set the flag to false to hide the alert
   }
   removeTask(id: number): void {
+    this.value = true;
+  this.storeService.setData(this.value);
     const deleteUrl = `${this.apiUrl}${id}/`;
     this.http.delete(deleteUrl).subscribe(
       (response : any) => {
         if (response.message) {
           this.responseType = 'success';
           this.responseMessage = response.message;
+          
           this.showAlert(); // Call a function to show the alert
           setTimeout(() => {
             this.hideAlert(); // Call a function to hide the alert after 2 seconds
           }, 2000);
         }
-        
+
         this.tasks = this.tasks.filter(task => task.id !== id);
+        this.value = false;
+        this.storeService.setData(this.value);
       },
       (error) => {
+        this.value = false;
+  this.storeService.setData(this.value);
         console.error('Error deleting task:', error);
       }
     );
@@ -187,6 +211,9 @@ export class TodoappComponent implements OnInit {
   }
 
   updateTask(pk: number): Promise<any> {
+
+    this.value = true;
+    this.storeService.setData(this.value);
     const formData = new FormData();
     Object.keys(this.taskForm.value).forEach(key => {
       formData.append(key, this.taskForm.value[key]);
@@ -196,14 +223,20 @@ export class TodoappComponent implements OnInit {
       .then(() => {
         this.taskForm.reset();
         this.refreshTasks();
+        this.value = false;
+        this.storeService.setData(this.value);
       })
       .catch(error => {
+        this.value = false;
+        this.storeService.setData(this.value);
         console.error('Error updating task:', error);
         throw error;
       });
   }
 
   callupdate(formData: FormData, pk: number): Promise<any> {
+    this.value = true;
+    this.storeService.setData(this.value);
     const updateUrl = `${this.apiUrl}${pk}/`;
     console.log(updateUrl, formData);
 
@@ -226,6 +259,8 @@ export class TodoappComponent implements OnInit {
         setTimeout(() => {
           this.hideAlert(); // Call a function to hide the alert after 2 seconds
         }, 2000);
+        this.value = false;
+        this.storeService.setData(this.value);
       }
       return response.data;
     });

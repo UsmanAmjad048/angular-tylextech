@@ -30,7 +30,7 @@
         <div *ngFor="let menu of menu_lists" class="home-page-menu-design">
           <a (click)="closeNav()" class="home-page-menu-design-link" *ngIf="menu.tab === null"
             [routerLink]="menu.url">{{ menu.name }}</a>
-          <p class="home-page-menu-design-link" *ngIf="menu.tab !== null" [routerLink]="menu.tab">{{ menu.name }}</p>
+          <a class="home-page-menu-design-link" *ngIf="menu.tab !== null" [routerLink]="menu.tab">{{ menu.name }}</a>
           <ul *ngIf="menu.children" class="home-page-menu-design-link-children">
             <div *ngFor="let childMenu of menu.children" class="home-page-menu-design-link-children-content">
               <a (click)="closeNav()" class="home-page-menu-design-link-children-content-link"
@@ -41,15 +41,30 @@
             </div>
           </ul>
         </div>
+        <a [routerLink]="['/todoapp']">
+          <button class="signout tw-cursor-pointer" (click)="closeNav()">Todo App</button>
+        </a>
+        <a [routerLink]="['/angular-test']">
+          <button class="signout tw-cursor-pointer" (click)="closeNav()">angular-test</button>
+        </a>
+        
+        <div *ngIf="!isAuthenticated()">
+
+          <p>
+            <a (click)="closeNav()"  class="tw-font-normal tw-text-lg" [routerLink]="['/login']">login account</a>
+
+          </p>
+          <p>
+            <a (click)="closeNav()" class="tw-font-normal tw-text-lg"  [routerLink]="['/signUp']">signUp account</a>
+          </p>
+        </div>
+
         <div *ngIf="isAuthenticated()" class="tw-flex tw-items-start tw-flex-col">
-          <a routerLink="/todoapp">
-            <button class="signout tw-cursor-pointer" (click)="closeNav()">Todo App</button>
-          </a>          
-          <button  class="signout tw-cursor-pointer" (click)="logout();closeNav()">Sign Out</button>
+          <button class="signout tw-cursor-pointer" (click)="logout();closeNav()">Sign Out</button>
 
         </div>
-        
-        
+
+
 
       </div>
     </div>

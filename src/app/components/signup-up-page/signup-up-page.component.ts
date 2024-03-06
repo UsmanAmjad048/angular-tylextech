@@ -4,11 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import axios from 'axios';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-signup-up-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterModule],
   templateUrl: './signup-up-page.component.html',
   styleUrl: './signup-up-page.component.scss'
 })

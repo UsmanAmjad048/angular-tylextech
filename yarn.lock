@@ -3005,6 +3005,13 @@
     "@material/theme" "^14.0.0"
     tslib "^2.1.0"
 
+"@ngrx/store@^17.1.1":
+  version "17.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-17.1.1.tgz#5e38aa2372331c0bbb6a6a73550d77c4e3cf9e1f"
+  integrity sha512-MGbKLTcl4uq2Uzx+qbMYNy6xW+JnkpRiznaGFX2/NFflq/zNZsjbxZrvn4/Z6ClVYIjj3uadjM1fupwMYMJxVA==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@17.2.0":
   version "17.2.0"
   resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-17.2.0.tgz"
@@ -6883,6 +6890,11 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+ng2-slim-loading-bar@^10.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ng2-slim-loading-bar/-/ng2-slim-loading-bar-4.0.0.tgz#7256fdde7c058f14955a3ef2e65afafb5b664603"
+  integrity sha512-nG5/gl6YW9N+07nVfuhXnaKD0FJVjPaptm95bD8iyo5IYWGo6ZBvqOiJ2Ql5MS3qvLc3Xh12Z5G3uagZCRrOsw==
 
 ngx-bootstrap@^12.0.0:
   version "12.0.0"

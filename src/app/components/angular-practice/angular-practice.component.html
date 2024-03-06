@@ -361,6 +361,108 @@ Icon with a badge
 </button>
 </div>
 
+<!-- 
+<div class="flex flex-col h-screen">
+
+  <div class="relative overflow-auto grow border-t-2">
+      <mat-sidenav-container  class="h-full c-side-container">
+          <mat-sidenav autoFocus="false" #sidenav [mode]="sidenavMode" opened class="c-side-nav px-[12px] py-[8px]">
+                <ng-container *ngFor="let sidenav of sidenavs; let i = index">
+
+                  <ng-container *ngTemplateOutlet="sidenavItem; context: {item: sidenav, index: i}"></ng-container>
+                  
+                  <div *ngIf="sidenav.childrens && sidenav.expandable">
+                    <ng-container *ngFor="let child of sidenav.childrens">
+                      <ng-container *ngTemplateOutlet="sidenavItem; context: {item: child, isChildren: true}"></ng-container>
+                    </ng-container>
+                  </div>
+                  
+                  <ng-template #sidenavItem let-item="item" let-index="index" let-isChildren="isChildren">
+                    <a class="flex items-center py-2 px-3"  routerLinkActive="sidenav-active" (click)="item.click ? item.click(item, $event) : ''" [ngClass]="{'sidenav-item cursor-pointer': !item.childrens, 'pl-[32px]': isChildren}">
+                      <div class="bg-black w-[24px]  mr-2 cursor-pointer" *ngIf="item.childrens" [ngClass]="item.expandable ? 'icon-chevron-down' : 'icon-chevron-right'" (click)="item.childrens ? toggleSideNavList(index) : ''"></div>
+                      <div [ngClass]="item.icon ? item.icon + ' bg-black w-[24px] mr-2 icon' : ''"></div>
+                      <span [ngClass]="item.childrens ? 'font-bold text-sm' : ''">{{item.name}}</span>
+                    </a>
+                  </ng-template>
+                  
+                  <div class="mb-2"></div>
+                </ng-container>
+                
+          </mat-sidenav>
+          <mat-sidenav-content role="main" class="bg-white flex flex-col c-side-content">
+              <div class="px-[32px] pt-[8px] flex items-center gap-2">
+                  <div class="sm:hidden -ml-[12px] cursor-pointer" (click)="sidenav.toggle()">
+                    <mat-icon class="align-middle">drag_handle</mat-icon>
+                  </div>
+              </div>
+              <div class="grow">
+              </div>
+          </mat-sidenav-content>
+      </mat-sidenav-container>
+  </div>
+</div> -->
+
+<div>
+  <div class="">
+    <mat-sidenav-container class="">
+      <mat-sidenav autoFocus="false" #sidenav [mode]="sidenavMode" opened class=" px-[12px] py-[8px]">
+        <ng-container *ngFor="let sidenav of sidenavs; let i = index">
+          <ng-container *ngTemplateOutlet="sidenavItem; context: {item: sidenav, index: i}"></ng-container>
+          <div *ngIf="sidenav.childrens && sidenav.expandable">
+            <ng-container *ngFor="let child of sidenav.childrens">
+              <ng-container *ngTemplateOutlet="sidenavItem; context: {item: child, isChildren: true}"></ng-container>
+            </ng-container>
+          </div>
+          <ng-template #sidenavItem let-item="item" let-index="index" let-isChildren="isChildren">
+            <a class=""   (click)="item.click ? item.click(item, $event) : ''" >
+              <div class="" *ngIf="item.childrens"  (click)="item.childrens ? toggleSideNavList(index) : ''"></div>
+              <div ></div>
+              <span >{{item.name}}</span>
+            </a>
+          </ng-template>
+          <div class="mb-2"></div>
+        </ng-container>
+      </mat-sidenav>
+      <mat-sidenav-content role="main" class="bg-white flex flex-col">
+        <div class="px-[32px] pt-[8px] flex items-center gap-2">
+          <div class="sm:hidden -ml-[12px] cursor-pointer" (click)="sidenav.toggle()">
+            <mat-icon class="align-middle">drag_handle</mat-icon>
+          </div>
+        </div>
+        <div class="grow">
+          <!-- Your content goes here -->
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 

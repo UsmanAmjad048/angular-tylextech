@@ -1,4 +1,6 @@
+
 <div class="container tw-pt-32">
+
     <app-alert [type]="responseType" [message]="responseMessage" [ngClass]="{'show': alertVisible}" class="alert" (close)="hideAlert()"></app-alert>
 
     <form [formGroup]="taskForm" enctype="multipart/form-data"

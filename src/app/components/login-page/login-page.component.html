@@ -8,6 +8,5 @@
       <input formControlName="password" class="tw-appearance-none tw-border tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight tw-focus:tw-outline-none tw-focus:tw-shadow-outline" type="password" id="password">
     </div>
     <button type="submit" class="tw-bg-blue-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-full tw-inline-block tw-mb-4">Submit</button>
-    <span class="tw-block tw-text-gray-700 tw-text-sm">Don't have an account? <a routerLink="/signUp" class="tw-text-blue-500 hover:tw-text-blue-700">Sign Up</a></span>
-  </form>
-</div>
+    <span class="tw-block tw-text-gray-700 tw-text-sm">Don't have an account? <a [routerLink]="['/signUp']" class="tw-text-blue-500 hover:tw-text-blue-700">Sign Up</a></span>
+  </form></div>

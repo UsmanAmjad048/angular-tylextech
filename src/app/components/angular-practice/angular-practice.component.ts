@@ -37,7 +37,16 @@ import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
+interface Sidenav {
+  name: string;
+  expandable?: boolean;
+  childrens?: Sidenav[];
+  url?: string;
+  icon?: string;
+  click?: (value: any, event?: any) => void;
+}
 
 export interface Fruit {
   name: string;
@@ -48,7 +57,7 @@ export interface Fruit {
   providers: [provideNativeDateAdapter()],
 
   imports: [
-    FormsModule,
+    FormsModule,MatSidenavModule,
     MatButtonToggleModule, MatMenuModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatBadgeModule, MatCardModule,
     MatInputModule, MatExpansionModule, MatPaginatorModule, CommonModule,
     MatAutocompleteModule, MatChipsModule, MatDividerModule, MatProgressSpinnerModule,
@@ -255,6 +264,60 @@ export class AngularPracticeComponent {
     if (index >= 0) {
       this.fruits[index].name = value;
     }
+  }
+  sidenavMode: 'side' | 'over' = window.innerWidth > 600 ? 'side' : 'over';
+
+  toggleSideNavList(index: number) {
+    this.sidenavs[index].expandable = !this.sidenavs[index].expandable;
+  }
+  sidenavs: Sidenav[] = [
+    {
+      name: 'MADBot 101',
+      expandable: true,
+      childrens: [
+        {
+          name: 'Video Tutorials',
+          icon: 'icon-glasses',
+          url: '/community/tutorial'
+        },
+        {
+          name: 'Info & FAQ',
+          icon: 'icon-info',
+          url: '/community/faq'
+        }
+      ]
+    },
+    {
+      name: 'MADBot Features',
+      expandable: true,
+      childrens: [
+        {
+          name: 'Feature updates',
+          icon: 'icon-announcement',
+          url: '/community/feature-update'
+        },
+        {
+          name: 'Request a feature',
+          icon: 'icon-feedback',
+          url: '/community/feature-request'
+        }
+      ]
+    },
+    {
+      name: 'Report a bug',
+      icon: 'icon-flag',
+      url: '/community/report-bug'
+    },
+    {
+      name: 'Schedule a Demo',
+      icon: 'icon-arrow-diagonal',
+      click: (value, event) => this.openScheduleDemo(event),
+    },
+  ];
+  
+  openScheduleDemo(event: any) {
+    event.stopPropagation();
+    window.location.href = "https://calendly.com/madbotai";
   }
 
 }

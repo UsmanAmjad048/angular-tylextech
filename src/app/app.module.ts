@@ -11,18 +11,25 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor'; 
- @NgModule({
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+ 
+@NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,HttpClientModule,
- 
-    RouterModule.forRoot( routes, {enableTracing: true} )
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,MatProgressBarModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes, { enableTracing: true }) // RouterModule should be imported once with the routes
+  ],
+  exports: [
+    HeaderComponent
   ],
   providers: [
     provideAnimationsAsync(),
@@ -34,5 +41,4 @@ import { AuthInterceptor } from './auth.interceptor';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

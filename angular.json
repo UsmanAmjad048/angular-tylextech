@@ -38,7 +38,8 @@
               "node_modules/tailwindcss/utilities.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
-            ],
+            ]
+,            
             "scripts": [
               "./node_modules/material-components-web/dist/material-components-web.js",
               "./node_modules/hammerjs/hammer.min.js"
