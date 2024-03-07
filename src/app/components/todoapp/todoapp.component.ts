@@ -1,4 +1,4 @@
-import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Task } from '../task.model';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { AlertComponent } from '../alert/alert.component';
-import { StoreService } from  '../store.service';
+import { StoreService } from '../store.service';
 import axios from 'axios';
 interface ApiResponse {
   status: boolean;
@@ -41,12 +41,12 @@ export class TodoappComponent implements OnInit {
   pk: number = 0;
   responseType: "success" | "error" = "success";
   responseMessage: string = ''
-  alertVisible :boolean=false;
+  alertVisible: boolean = false;
   private apiUrl = 'http://127.0.0.1:8000/items/';
   taskForm: FormGroup;
   tasks: Task[] = [];
   submitbutton: boolean;
-  constructor(private storeService: StoreService,private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private storeService: StoreService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: [''],
@@ -91,11 +91,11 @@ export class TodoappComponent implements OnInit {
       });
     }
   }
-  
+
   onSubmit() {
     if (this.taskForm.valid) {
       this.value = true;
-  this.storeService.setData(this.value);
+      this.storeService.setData(this.value);
 
       const formData = new FormData();
       Object.keys(this.taskForm.value).forEach(key => {
@@ -110,16 +110,16 @@ export class TodoappComponent implements OnInit {
             this.responseType = 'success';
             this.responseMessage = response.messsage;
             this.value = false;
-  this.storeService.setData(this.value);
+            this.storeService.setData(this.value);
             this.showAlert();
             setTimeout(() => {
-              this.hideAlert(); 
+              this.hideAlert();
             }, 2000);
           }
         },
         (error) => {
           this.value = false;
-  this.storeService.setData(this.value);
+          this.storeService.setData(this.value);
           this.responseType = 'error';
           this.responseMessage = error;
         });
@@ -130,13 +130,13 @@ export class TodoappComponent implements OnInit {
 
   refreshTasks() {
     this.value = true;
-  this.storeService.setData(this.value);
+    this.storeService.setData(this.value);
     this.getTasks().subscribe(
       (response: ApiResponse) => {
         console.log(response.data)
         this.tasks = response.data;
         this.value = false;
-  this.storeService.setData(this.value);
+        this.storeService.setData(this.value);
         const fileInput = document.getElementById('image') as HTMLInputElement;
         if (fileInput) {
           fileInput.value = '';
@@ -144,7 +144,7 @@ export class TodoappComponent implements OnInit {
       },
       (error) => {
         this.value = false;
-  this.storeService.setData(this.value);
+        this.storeService.setData(this.value);
         console.error('Error refreshing tasks:', error);
       }
     );
@@ -152,20 +152,20 @@ export class TodoappComponent implements OnInit {
   showAlert() {
     this.alertVisible = true; // Set a flag to true to show the alert
   }
-  
+
   hideAlert() {
     this.alertVisible = false; // Set the flag to false to hide the alert
   }
   removeTask(id: number): void {
     this.value = true;
-  this.storeService.setData(this.value);
+    this.storeService.setData(this.value);
     const deleteUrl = `${this.apiUrl}${id}/`;
     this.http.delete(deleteUrl).subscribe(
-      (response : any) => {
+      (response: any) => {
         if (response.message) {
           this.responseType = 'success';
           this.responseMessage = response.message;
-          
+
           this.showAlert(); // Call a function to show the alert
           setTimeout(() => {
             this.hideAlert(); // Call a function to hide the alert after 2 seconds
@@ -178,13 +178,15 @@ export class TodoappComponent implements OnInit {
       },
       (error) => {
         this.value = false;
-  this.storeService.setData(this.value);
+        this.storeService.setData(this.value);
         console.error('Error deleting task:', error);
       }
     );
   }
 
   update(id: number) {
+    this.value = true;
+    this.storeService.setData(this.value);
     this.submitbutton = false;
     this.pk = id;
     const apiUr = `${this.apiUrl}${id}/`;
@@ -198,8 +200,12 @@ export class TodoappComponent implements OnInit {
             due_date: this.task.due_date,
             status: this.task.status,
           });
+          this.value = false;
+          this.storeService.setData(this.value);
+
         },
         error => {
+          this.onCancel();
           console.error('Error fetching task:', error);
         }
       );
@@ -225,10 +231,12 @@ export class TodoappComponent implements OnInit {
         this.refreshTasks();
         this.value = false;
         this.storeService.setData(this.value);
+        this.onCancel();
       })
       .catch(error => {
         this.value = false;
         this.storeService.setData(this.value);
+        this.onCancel();
         console.error('Error updating task:', error);
         throw error;
       });
@@ -250,20 +258,20 @@ export class TodoappComponent implements OnInit {
     }
 
     return axios.put(updateUrl, formData, { headers })
-    .then(response  => {
-      if (response.data.message) {
+      .then(response => {
+        if (response.data.message) {
 
-        this.responseType = 'success';
-        this.responseMessage = response.data.message;
-        this.showAlert(); // Call a function to show the alert
-        setTimeout(() => {
-          this.hideAlert(); // Call a function to hide the alert after 2 seconds
-        }, 2000);
-        this.value = false;
-        this.storeService.setData(this.value);
-      }
-      return response.data;
-    });
-  
+          this.responseType = 'success';
+          this.responseMessage = response.data.message;
+          this.showAlert(); // Call a function to show the alert
+          setTimeout(() => {
+            this.hideAlert(); // Call a function to hide the alert after 2 seconds
+          }, 2000);
+          this.value = false;
+          this.storeService.setData(this.value);
+        }
+        return response.data;
+      });
+
   }
 }
